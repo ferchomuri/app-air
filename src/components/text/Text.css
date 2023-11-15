@@ -1,0 +1,15 @@
+p {
+  padding: 0;
+  margin: 8px 0;
+}
+
+/* Text.css */
+.text {
+  font-weight: var(--text-weight);
+  color: var(--text-color);
+  font-size: var(--text-size);
+}
+
+.min-space {
+  margin: 3px 0;
+}
