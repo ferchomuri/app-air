@@ -19,6 +19,8 @@ const Dialog: React.FC<IDialogProps> = ({ isOpen, onClose, children }) => {
     backgroundColor: "white",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
     zIndex: 999,
+    height: "450px",
+    width: "500px",
   } as React.CSSProperties;
 
   const overlayStyle = {
@@ -33,25 +35,16 @@ const Dialog: React.FC<IDialogProps> = ({ isOpen, onClose, children }) => {
   } as React.CSSProperties;
 
   return (
-    <>
+    <div>
       <div style={overlayStyle} onClick={onClose}></div>
       <div style={modalStyle}>
         <img className='close-img' src={Close} />
-        <span
-          style={{
-            cursor: "pointer",
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            fontSize: "20px",
-          }}
-          onClick={onClose}
-        >
+        <span className='dialog-content' onClick={onClose}>
           &times;
         </span>
-        {children}
+        <div className='center-content'>{children}</div>
       </div>
-    </>
+    </div>
   );
 };
 

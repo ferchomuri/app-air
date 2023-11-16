@@ -7,6 +7,7 @@ export type ITextProps = {
   weight?: number;
   size?: string;
   minSpace?: boolean;
+  center?: boolean;
 };
 
 const Text: React.FC<ITextProps> = ({
@@ -15,11 +16,13 @@ const Text: React.FC<ITextProps> = ({
   weight = 400,
   size = 16,
   minSpace,
+  center,
 }) => {
   const style = {
     "--text-color": color,
     "--text-weight": weight,
     "--text-size": size,
+    "--text-align": center ? "center" : "left",
   } as React.CSSProperties;
 
   return (
