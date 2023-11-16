@@ -1,5 +1,7 @@
 # React + TypeScript + Vite + Jest - Personalizado por FM
 
+Entiendo que esta no es la mejor práctica, pero para evitar complicaciones en la configuración o pérdida de tiempo, he hardcodeado la clave de Google que estoy utilizando. Sin embargo, planeo eliminarla en los próximos días.
+
 **Desarrollo Local:**
 
 - Ejecutar la aplicación: `npm run dev` (acceder en http://127.0.0.1:5173/)
