@@ -1,31 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { Input } from "../../components/input/Input";
 import { Text } from "../../components/text/Text";
 import { Title } from "../../components/title/Title";
 import Pin from "../../assets/map-pin.png";
 import PinGray from "../../assets/map-pin-gray.png";
-import "./Home.css";
 import { Dialog } from "../../components/dialog/Dialog";
 import { Button } from "../../components/button/Button";
+import "./Home.css";
+import { useHome } from "../../hooks/useHome";
 
-export type IHomeProps = {
-  // TODO
-};
+export interface IHomeProps {}
 
-const options = [
-  { value: "1", label: "1", sublabel: "sublabel 1" },
-  { value: "2", label: "2", sublabel: "sublabel 2" },
-  { value: "3", label: "3", sublabel: "sublabel 3" },
-  { value: "4", label: "4", sublabel: "sublabel 4" },
-  { value: "5", label: "5", sublabel: "sublabel 5" },
-];
+interface PlacePrediction {
+  placeId: string;
+  description: string;
+  name: string;
+  postalCode: string;
+}
 
-const Home: React.FC<IHomeProps> = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
+const Home: React.FC = () => {
+  const { state, closeModal, handleInputChange, handleSelectPlace } = useHome();
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
-
+  const { inputValue, predictions } = state;
   return (
     <>
       <div className='container'>
@@ -47,20 +43,23 @@ const Home: React.FC<IHomeProps> = () => {
           size={"16px"}
         />
         <div className='container-fields'>
-          <Input icon={Pin} />
-          {options.map((option, key) => (
-            <div key={key}>
-              <img className='icon-btn' src={PinGray} />
-              <button className='btn-option '>
+          <Input icon={Pin} value={inputValue} onChange={handleInputChange} />
+          {predictions.slice(0, 3).map((prediction: PlacePrediction) => (
+            <div key={prediction.placeId}>
+              <img className='icon-btn' src={PinGray} alt='Pin' />
+              <button
+                className='btn-option'
+                onClick={() => handleSelectPlace(prediction.postalCode)}
+              >
                 <Text
-                  text={option.label}
+                  text={prediction.name}
                   color='#000000'
                   weight={600}
                   size={"16px"}
                   minSpace
                 />
                 <Text
-                  text={option.sublabel}
+                  text={prediction.description}
                   color='#9da2ad'
                   size={"16px"}
                   minSpace
@@ -70,13 +69,44 @@ const Home: React.FC<IHomeProps> = () => {
           ))}
         </div>
       </div>
-      <button onClick={openModal}>Abrir Modal</button>
-      <Dialog isOpen={isModalOpen} onClose={closeModal}>
-        <Title text='Address updated' level={2} color='#000000' />
-        <Text text='New address added to your account' />
-        <Text text='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s' />
-        <Text text="Let's go shopping!" />
-        <Button text='UNDERSTOOD' />
+      <Dialog isOpen={state.isModalOpen} onClose={closeModal}>
+        <div className='general-dialog-content'>
+          <div className='row-dialog'>
+            <Title
+              text={state.validZip ? "Address updated" : "Out of Delivery Area"}
+              level={2}
+              color='#000000'
+            />
+            <Text
+              center
+              weight={600}
+              text={
+                state.validZip
+                  ? "New address added to your account"
+                  : '"Wherever I go, there I am"'
+              }
+            />
+            <Text
+              center
+              weight={600}
+              text={
+                state.validZip
+                  ? "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s"
+                  : "Sadly, this quote is not true for us. In other words, we are not operating in your area (yet), but things change every day."
+              }
+            />
+            <Text
+              center
+              weight={600}
+              text={
+                state.validZip
+                  ? "Let's go shopping!"
+                  : "Sign up for our newsletter to get notified."
+              }
+            />
+          </div>
+          <Button text='UNDERSTOOD' onClick={closeModal} />
+        </div>
       </Dialog>
     </>
   );
