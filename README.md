@@ -1,29 +1,23 @@
-# React + TypeScript + Vite + Jest - Custom by FM
+# React + TypeScript + Vite + Jest - Personalizado por FM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules and Jest.
+Entiendo que esta no es la mejor práctica, pero para evitar complicaciones en la configuración o pérdida de tiempo, he hardcodeado la clave de Google que estoy utilizando. Sin embargo, planeo eliminarla en los próximos días.
 
-Currently, two official plugins are available:
+**Desarrollo Local:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Ejecutar la aplicación: `npm run dev` (acceder en http://127.0.0.1:5173/)
 
-## Expanding the ESLint configuration
+**Pruebas:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Ejecutar pruebas: `npm run test`
 
-- Configure the top-level `parserOptions` property like this:
+## Descripción del Proyecto
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+Este proyecto está construido con Vite, React, TypeScript y Jest. Aquí tienes algunas características clave y decisiones de diseño:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-Also this template have a demo of Code Challenge
+- **Uso de Vite:** El proyecto aprovecha Vite, elegido por su rapidez y el deseo de explorar sus capacidades.
+- **Componentes Reutilizables:** Una carpeta dedicada contiene componentes reutilizables para evitar la duplicación de código en toda la aplicación.
+- **Estructura de Carpetas:**
+  - `Home`: Contiene la página inicial donde se construye la primera pantalla.
+  - `App`: Pensada para implementar rutas, autenticación y otras consideraciones de nivel superior.
+- **Custom Hook (useHome):** La lógica para el componente `Home` se abstrae en un hook personalizado (`useHome`). Esto ayuda a gestionar la complejidad del código en `Home.tsx` y facilita pruebas unitarias más efectivas.
+- **Pruebas Unitarias:** Aunque el esfuerzo para simular la autocompletación de Google para las pruebas presentó desafíos, se han implementado algunas pruebas unitarias. Las limitaciones de tiempo restringieron la extensión de las pruebas, dadas las obligaciones continuas con entregables y despliegues a producción.

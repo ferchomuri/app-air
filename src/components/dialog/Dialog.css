@@ -1,0 +1,26 @@
+.close-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.dialog-content {
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 18px;
+  font-size: 36px;
+  color: black;
+}

@@ -1,0 +1,16 @@
+p {
+  padding: 0;
+  margin: 8px 0;
+}
+
+/* Text.css */
+.text {
+  font-weight: var(--text-weight);
+  color: var(--text-color);
+  font-size: var(--text-size);
+  text-align: var(--text-align);
+}
+
+.min-space {
+  margin: 3px 0;
+}
