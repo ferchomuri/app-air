@@ -30,7 +30,7 @@ const Dialog: React.FC<IDialogProps> = ({ isOpen, onClose, children }) => {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
     zIndex: 998,
   } as React.CSSProperties;
 
