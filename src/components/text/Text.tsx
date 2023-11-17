@@ -8,6 +8,7 @@ export type ITextProps = {
   size?: string;
   minSpace?: boolean;
   center?: boolean;
+  margin?: string;
 };
 
 const Text: React.FC<ITextProps> = ({
@@ -17,12 +18,14 @@ const Text: React.FC<ITextProps> = ({
   size = 16,
   minSpace,
   center,
+  margin,
 }) => {
   const style = {
     "--text-color": color,
     "--text-weight": weight,
     "--text-size": size,
     "--text-align": center ? "center" : "left",
+    "--text-margin": margin,
   } as React.CSSProperties;
 
   return (

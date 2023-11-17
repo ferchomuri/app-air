@@ -9,6 +9,7 @@ p {
   color: var(--text-color);
   font-size: var(--text-size);
   text-align: var(--text-align);
+  margin: var(--text-margin);
 }
 
 .min-space {
