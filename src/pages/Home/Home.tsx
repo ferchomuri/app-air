@@ -25,22 +25,30 @@ const Home: React.FC = () => {
   return (
     <>
       <div className='container'>
-        <Title text='Where are you located?' level={1} color='#000000' />
+        <Title
+          text='Where are you located?'
+          level={2}
+          color='#000000'
+          margin={"0 0 30px 0"}
+        />
         <Text
           text='So we know where to drop off the stuff'
           color='#000000'
           weight={600}
           size={"16px"}
+          margin={"0 0 20px 0"}
         />
         <Text
           text={`We won't share your address`}
           color='#9da2ad'
           size={"16px"}
+          margin={"0 0 0 0"}
         />
         <Text
           text={`with your ex (or whoever).`}
           color='#9da2ad'
           size={"16px"}
+          margin={"0 0 0 0"}
         />
         <div className='container-fields'>
           <Input icon={Pin} value={inputValue} onChange={handleInputChange} />
